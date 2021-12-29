@@ -1,5 +1,5 @@
 from brownie import SimpleCollectible, network
-from scripts.helpers import get_account
+from scripts.helpers import get_account, OPEN_SEA_TEST_NET_URL
 
 agumon_token_uri = "https://ipfs.io/ipfs/bafkreifgmuhcggw7c5rtn2q4ro5jyxo67rw5oktabku26j6hkslcvr76uy?filename=augmon.json/"
 OPEN_SEA_TEST_NET_URL = "https://testnets.opensea.io/asset/{}/{}"

@@ -1,6 +1,6 @@
 from brownie import network, SimpleCollectible
 from scripts.helpers import get_account, is_development, is_forked_local
-from scripts.deploy import create_collectible
+from scripts.advanced_collectible.deploy import create_collectible
 import pytest
 
 
