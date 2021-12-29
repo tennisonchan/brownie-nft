@@ -18,7 +18,7 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase, ERC721URIStorage {
     event breedAssigned(uint256 indexed tokenId, Breed breed);
 
     enum Breed {
-        Agumono,
+        Agumon,
         Armadillomon,
         Chibomon,
         DemiVeeimon,

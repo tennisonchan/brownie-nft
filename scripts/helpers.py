@@ -54,3 +54,26 @@ def fund_contract(contract_address, account=None, link_token=None, amount=None):
     print(f"contract {contract_address} is funded!")
 
     return tx
+
+
+BREED_MAP = {
+    0: "Agumon",
+    1: "Armadillomon",
+    2: "Chibomon",
+    3: "DemiVeeimon",
+    4: "Gomamon",
+    5: "Hawkmon",
+    6: "Leafmon",
+    7: "Minomon",
+    8: "Palmon",
+    9: "Patamon",
+    10: "Poromon",
+    11: "Tokomon",
+    12: "Upamon",
+    13: "Veemon",
+    14: "Wormmon",
+}
+
+
+def get_breed(breed_index):
+    return BREED_MAP[breed_index]
