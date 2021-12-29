@@ -4,11 +4,13 @@ wallets:
   from_key: ${PRIVATE_KEY}
 
 dependencies:
-  - OpenZeppelin/openzeppelin-contracts@3.4.0
+  - OpenZeppelin/openzeppelin-contracts@4.4.0
+  - smartcontractkit/chainlink-brownie-contracts@1.2.0
 
 compiler:
   solc:
     remappings:
-      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0"
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.4.0"
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@1.2.0"
 # networks:
 #   default: mainnet-fork
