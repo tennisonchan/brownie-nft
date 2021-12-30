@@ -1,7 +1,8 @@
 from pathlib import Path
 import requests
 import os
-from scripts.ipfs import get_ipfs_url
+from scripts.ipfs import get_ipfs_url, set_ipfs_cache, get_ipfs_url_from_cache
+from brownie import network
 
 PINATA_BASE_URL = "https://api.pinata.cloud"
 PIN_FILE_TO_IPFS_URL = "/pinning/pinFileToIPFS"
@@ -10,6 +11,9 @@ TEST_FILE_PATH = "./img/agumon.gif"
 
 # https://docs.pinata.cloud/api-pinning/pin-file
 def upload_file_to_pinata(file_path):
+    url = get_ipfs_url_from_cache(file_path)
+    if url:
+        return url
     with Path(file_path).open("rb") as file:
         file_binary = file.read()
         filename = file_path.split("/")[-1]
@@ -25,6 +29,7 @@ def upload_file_to_pinata(file_path):
         print(response.json())
         hash = response.json()["IpfsHash"]
         url = get_ipfs_url(hash, filename)
+        set_ipfs_cache(file_path, url)
         print(f"Uploaded with hash {hash} at {url}")
         return url
 
