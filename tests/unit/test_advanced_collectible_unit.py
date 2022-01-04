@@ -1,19 +1,18 @@
-from brownie import AdvancedCollectible, network, config
-from scripts.helpers import get_account, is_development, is_forked_local, get_contract
+from brownie import network
+from scripts.helpers import get_account, is_development, get_contract
 from scripts.advanced_collectible.deploy import deploy_collectible
 from scripts.advanced_collectible.create_collectible import create_collectible
 import pytest
-import time
 
 
-def test_can_create_collectible_integration():
+def test_can_create_collectible_unit():
     print(f"network: {network.show_active()}")
 
     if not is_development(network.show_active()):
         pytest.skip()
 
     account = get_account()
-    contract = deploy_collectible()
+    contract = deploy_collectible(forced=True)
 
     assert contract.tokenIds() == 0
     tx = create_collectible()
@@ -24,7 +23,6 @@ def test_can_create_collectible_integration():
         request_id, randomness, contract.address, {"from": account}
     )
     tx_fulfillRandomness.wait(1)
-    time.sleep(60)
     # token_id = tx.events["breedAssigned"]["tokenId"]
     # breed = tx.events["breedAssigned"]["breed"]
     # print(f"token_id: {token_id}")
