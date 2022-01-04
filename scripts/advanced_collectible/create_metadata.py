@@ -13,7 +13,7 @@ def create_metadata():
     number_collectible = contract.tokenIds()
     print(f"There are {number_collectible} of collectible(s)")
 
-    for token_id in range(1):
+    for token_id in range(number_collectible):
         breed_index = contract.tokenIdToBreed(token_id)
         breed_name = get_breed(breed_index)
         metadata_filename = f"{token_id}-{breed_name.lower()}.json"

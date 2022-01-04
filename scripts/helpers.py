@@ -2,7 +2,9 @@ from brownie import accounts, network, config, VRFCoordinatorMock, LinkToken, Co
 
 LOCAL_ENVIRONMENT = ["development", "ganache-local"]
 
-OPEN_SEA_TEST_NET_URL = "https://testnets.opensea.io/asset/{}/{}"
+
+def get_open_sea_url(contract_address, tokenId):
+    return f"https://testnets.opensea.io/assets/{contract_address}/{tokenId}"
 
 
 def is_development(active_network):

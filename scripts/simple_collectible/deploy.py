@@ -1,8 +1,7 @@
 from brownie import SimpleCollectible, network
-from scripts.helpers import get_account, OPEN_SEA_TEST_NET_URL
+from scripts.helpers import get_account, get_open_sea_url
 
 agumon_token_uri = "https://ipfs.io/ipfs/bafkreifgmuhcggw7c5rtn2q4ro5jyxo67rw5oktabku26j6hkslcvr76uy?filename=augmon.json/"
-OPEN_SEA_TEST_NET_URL = "https://testnets.opensea.io/asset/{}/{}"
 
 
 def deploy_collectible():
@@ -17,7 +16,7 @@ def create_collectible():
     contract = deploy_collectible()
     tx = contract.createCollectible(agumon_token_uri, {"from": account})
     tx.wait(1)
-    print(f"View your NFT at {OPEN_SEA_TEST_NET_URL.format(contract.address, 1)}")
+    print(f"View your NFT at {get_open_sea_url(contract.address, 1)}")
     return tx
 
 
